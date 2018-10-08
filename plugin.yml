@@ -1,0 +1,10 @@
+name: CommandBlock
+main: me.commandBlock.CommandBlock
+version: 0.0.1
+authors: [me]
+description: []
+commands:
+  cb: #指令名
+    description: "测试指令" #指令的注解
+    usage: §c用法：/cb <reload> - 重载配置文件 #指令的用法 当onCommand()方法返回false时提示这里的内容
+

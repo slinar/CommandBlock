@@ -1,0 +1,6 @@
+list:
+  - '/op'
+  - '/deop'
+
+playerWhiteList:
+  - 'test'
