@@ -2,7 +2,6 @@ package me.commandBlock;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import net.milkbowl.vault.permission.Permission;
 
@@ -13,27 +12,40 @@ import org.bukkit.plugin.RegisteredServiceProvider;
 public final class CommandBlock extends org.bukkit.plugin.java.JavaPlugin {
     public static Permission permission = null;
     private static CommandBlock INSTANCE;
-    private static ScheduledExecutorService ses = Executors.newScheduledThreadPool(2);
+    public static ScheduledExecutorService ses = Executors.newScheduledThreadPool(2);
 
+    /**插件启用时执行的代码*/
     @Override
     public void onEnable() {
         INSTANCE = this;
         setupPermissions();
         ConfigFile.loadConfig();
-        getServer().getPluginManager().registerEvents(new CommandListener(), this);
-        Bukkit.getPluginCommand("cb").setExecutor(new CmdExecutor());
-        Bukkit.getPluginCommand("cb").setTabCompleter(new CmdExecutor());
-        ses.scheduleAtFixedRate(ConfigFile.getTask(), 5, 5, TimeUnit.SECONDS);
+        regListeners();
+        regCmds();
         getLogger().info("CommandBlock is enabled!");
     }
 
+    /**插件禁用时执行的代码*/
     @Override
     public void onDisable() {
         HandlerList.unregisterAll(this);
-        ses.shutdownNow();
-        getLogger().info("CommandBlock is disabled");
+        ConfigFile.futureUpdateConfig.cancel(true);
+        getLogger().info("CommandBlock is disabled!");
     }
 
+    /**注册事件监听器*/
+    private void regListeners() {
+        getServer().getPluginManager().registerEvents(new CommandListener(), this);
+    }
+    
+    /**注册命令,并设置执行者和Tab补全*/
+    private void regCmds() {
+        CmdExecutor cmdExecutor = new CmdExecutor();
+        Bukkit.getPluginCommand("cb").setExecutor(cmdExecutor);
+        Bukkit.getPluginCommand("cb").setTabCompleter(cmdExecutor);
+    }
+       
+    /**设置Vault权限*/
     private void setupPermissions() {
         try {
             RegisteredServiceProvider<Permission> permissionProvider = getServer().getServicesManager()
@@ -47,6 +59,7 @@ public final class CommandBlock extends org.bukkit.plugin.java.JavaPlugin {
         }
     }
 
+    /**返回这个插件的实例*/
     public static CommandBlock getIns() {
         return INSTANCE;
     }
