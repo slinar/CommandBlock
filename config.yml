@@ -1,6 +1,12 @@
+# 禁用命令列表
 list:
   - '/op'
   - '/deop'
+  - '/stop'
 
+# 白名单玩家列表，在白名单内的玩家执行命令将不受限制
 playerWhiteList:
   - 'test'
+
+# 检测配置文件更改的频率(时间单位:sec),默认每3秒检测一次,最小1秒,最大60秒
+configUpdateInterval: 3
