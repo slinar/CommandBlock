@@ -13,7 +13,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 public class ConfigFile {
-    static final String PREFIX = "§c[CommandBlock] ";
+    static final String PREFIX = "§e[CommandBlock]§r ";
     static final String PREFIX_C = "[CommandBlock] ";
     private static CommandBlock ins = CommandBlock.getIns();
     private static File file;
@@ -80,6 +80,14 @@ public class ConfigFile {
         return interval;
     }
 
+    public static String getDenyMessage() {
+        if (config.getString("denyMessage") == null) {
+            return "";
+        } else {
+            return config.getString("denyMessage").trim();
+        }
+    }
+    
     private static String getConfigMd5() {
         String var = "";
         try {
