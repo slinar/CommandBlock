@@ -22,25 +22,33 @@ public final class CheckCommand {
 
         if (commandList.size() > 0) {
             // 处理用户输入的信息
-            String temp = "";
-            String[] temp1 = commandStr.split(" ");
-            String[] temp2 = temp1[0].split(":");
-            if (temp2.length == 1) {
-                temp = temp2[0];
-            } else if (temp2.length > 1) {
-                temp = "/" + temp2[temp2.length - 1];
+            String[] commandStrs = commandStr.split(" ");
+            String[] temp = commandStrs[0].split(":");
+            if (temp.length > 1) {
+                commandStrs[0] = "/" + temp[temp.length - 1];
             }
 
             // 如果玩家将要执行的指令和禁用指令列表匹配成功，则返回true
-            for (int i = 0; i < commandList.size(); i++) {
-                if (commandList.get(i).equalsIgnoreCase(temp)) {
-                    Bukkit.getLogger().info(ConfigFile.PREFIX_C + "命令列表匹配成功：" + commandList.get(i));
-                    return true;
+     outer: for (int i = 0; i < commandList.size(); i++) {
+                String[] strings = tr(commandList.get(i)).split(" ");
+                if (commandStrs.length < strings.length) {
+                    continue;
                 }
+                for (int count = 0; count < strings.length; count++) {
+                    if (!strings[count].equalsIgnoreCase(commandStrs[count])) {
+                        continue outer;
+                    }
+                }
+                Bukkit.getLogger().info(ConfigFile.PREFIX_C + "命令列表匹配成功：" + commandList.get(i));
+                return true;
             }
         }
 
         // 如果全部没有匹配成功，则表示玩家不在白名单，而且玩家执行的指令也没有被禁止，返回false
         return false;
+    }
+    
+    private static String tr(String string) {
+        return string.trim().replaceAll(" {2,}", " ");
     }
 }
