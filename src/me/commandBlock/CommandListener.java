@@ -13,6 +13,9 @@ public class CommandListener implements Listener {
             e.setCancelled(true);
             Bukkit.getLogger().info(
                     ConfigFile.PREFIX_C + "玩家 " + e.getPlayer().getName() + " 试图执行:" + e.getMessage() + ", 已拦截操作！");
+            if (ConfigFile.getDenyMessage().length() > 0) {
+                e.getPlayer().sendMessage(ConfigFile.PREFIX + ConfigFile.getDenyMessage());
+            }
         }
     }
 }
