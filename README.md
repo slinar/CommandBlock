@@ -1,8 +1,8 @@
 # CommandBlock
-开发环境:
-IDE：Eclipse Photon Release (4.8.0)<br>
-游戏版本：MineCraft 1.12.2<br>
-插件类型：Bukkit<br>
+**开发环境:**<br>
+**IDE：** Eclipse Photon Release (4.8.0)<br>
+**游戏版本：** MineCraft 1.12.2<br>
+**插件类型：** Bukkit<br>
 
 ### 描述
 有些服主可能想禁用掉一部分命令，或者只让部分玩家执行一些额特殊的命令，或者觉得OP权限太大了想禁用掉部分指令，这样这些命令只能再控制台执行。
