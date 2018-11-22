@@ -51,4 +51,5 @@ public final class CheckCommand {
     private static String tr(String string) {
         return string.trim().replaceAll(" {2,}", " ");
     }
+    
 }
