@@ -2,7 +2,7 @@ package me.commandBlock;
 
 import java.util.List;
 
-import org.bukkit.Bukkit;
+// import org.bukkit.Bukkit;
 
 public final class CheckCommand {
 
@@ -39,7 +39,7 @@ public final class CheckCommand {
                         continue outer;
                     }
                 }
-                Bukkit.getLogger().info(ConfigFile.PREFIX_C + "命令列表匹配成功：" + commandList.get(i));
+                // Bukkit.getLogger().info(ConfigFile.PREFIX_C + "命令列表匹配成功：" + commandList.get(i));
                 return true;
             }
         }
