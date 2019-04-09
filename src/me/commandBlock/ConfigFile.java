@@ -93,10 +93,8 @@ public class ConfigFile {
         try {
             var = DigestUtils.md5Hex(new FileInputStream(file));
         } catch (FileNotFoundException e) {
-            // TODO 自动生成的 catch 块
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO 自动生成的 catch 块
             e.printStackTrace();
         }
         return var;
