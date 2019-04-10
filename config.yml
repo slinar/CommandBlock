@@ -1,9 +1,10 @@
 # 注意yaml语法格式，冒号后面应该有一个空格
 # 禁用命令列表
 list:
-  - '/op'
-  - '/deop'
-  - '/stop'
+  - 'op'
+  - 'deop'
+  - 'stop'
+  - 'reload'
 
 # 白名单玩家列表，在白名单内的玩家执行命令将不受限制
 playerWhiteList:
