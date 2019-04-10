@@ -4,7 +4,7 @@ version: 1.2.0
 authors: [me]
 description: []
 commands:
-  cb: #指令名
+  cb:
     description: "测试指令" #指令的注解
-    usage: §c用法：/cb <reload> - 重载配置文件 #指令的用法 当onCommand()方法返回false时提示这里的内容
-
+    usage: §c/cb <reload> - 重载配置文件
+           §c/cb <debug> <on/off> - 调试信息开关
