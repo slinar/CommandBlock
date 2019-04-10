@@ -13,7 +13,8 @@ public class CmdCb {
             add("reload");
         }
     };
-
+    static boolean debug = false;
+    
     public static boolean exec(CommandSender sender, String[] args) {
         if (sender instanceof org.bukkit.command.ConsoleCommandSender) {
             if ((args.length == 1) && (args[0].equalsIgnoreCase("reload"))) {
@@ -29,6 +30,22 @@ public class CmdCb {
                 if ((args.length == 1) && (args[0].equalsIgnoreCase("reload"))) {
                     ConfigFile.loadConfig();
                     sender.sendMessage(ConfigFile.PREFIX + "已重载配置!");
+                    return true;
+                }
+                if ((args.length >= 1) && (args[0].equalsIgnoreCase("debug"))) {
+                    if (args.length == 1) {
+                        sender.sendMessage(ConfigFile.PREFIX + "/cb debug on - 开启debug");
+                        sender.sendMessage(ConfigFile.PREFIX + "/cb debug off - 关闭debug");
+                    } else if (args[1].equalsIgnoreCase("on")) {
+                        debug = true;
+                        sender.sendMessage(ConfigFile.PREFIX + "debug 已开启!");
+                    } else if (args[1].equalsIgnoreCase("off")) {
+                        debug = false;
+                        sender.sendMessage(ConfigFile.PREFIX + "debug 已关闭!");
+                    } else {
+                        sender.sendMessage(ConfigFile.PREFIX + "/cb debug on  - 开启调试");
+                        sender.sendMessage(ConfigFile.PREFIX + "/cb debug off - 关闭调试");
+                    }
                     return true;
                 }
             } else {
