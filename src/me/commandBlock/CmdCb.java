@@ -11,6 +11,7 @@ public class CmdCb {
     private static final List<String> args1 = new ArrayList<String>() {
         {
             add("reload");
+            add("debug");
         }
     };
     static boolean debug = false;
