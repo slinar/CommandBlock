@@ -10,8 +10,10 @@ import org.bukkit.command.TabCompleter;
 
 public class CmdExecutor implements CommandExecutor, TabCompleter {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (cmd.getName().equalsIgnoreCase("cb"))
-            return CmdCb.exec(sender, args);
+        if (cmd.getName().equalsIgnoreCase("cb")) {
+            CmdCb.exec(sender, args);
+            return true;
+        }
         return false;
     }
 
