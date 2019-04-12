@@ -5,9 +5,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import org.bukkit.Bukkit;
-
 public final class CheckCommand {
+    private static CommandBlock ins = CommandBlock.getIns();
 
     /**
      * 根据配置文件检查玩家输入的指令是否需要拦截
@@ -49,7 +48,7 @@ public final class CheckCommand {
                             continue outer;
                         }
                     }
-                    if (CmdCb.debug) Bukkit.getLogger().info(ConfigFile.PREFIX_C + "命令列表匹配成功：" + commandList.get(i));
+                    if (CmdCb.debug) ins.getLogger().info("命令列表匹配成功：" + commandList.get(i));
                     return true;
                 }
             }
@@ -80,7 +79,7 @@ public final class CheckCommand {
         } catch (PatternSyntaxException e) {
             System.out.println("错误的正则表达式:" + e.getPattern());
         }
-        if (CmdCb.debug) System.out.println("reg:" + reg + "  " + "strs:" + strs + "  " + result);
+        if (CmdCb.debug) ins.getLogger().info("reg:" + reg + "  " + "strs:" + strs + "  " + String.valueOf(result));
         return result;
     }
     
