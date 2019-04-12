@@ -13,11 +13,14 @@ public final class CommandBlock extends org.bukkit.plugin.java.JavaPlugin {
     public static Permission permission = null;
     private static CommandBlock INSTANCE;
     public static ScheduledExecutorService ses = Executors.newScheduledThreadPool(2);
+    
+    public CommandBlock() {
+        INSTANCE = this;
+    }
 
     /**插件启用时执行的代码*/
     @Override
     public void onEnable() {
-        INSTANCE = this;
         setupPermissions();
         ConfigFile.loadConfig();
         regListeners();
