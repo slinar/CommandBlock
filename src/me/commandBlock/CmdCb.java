@@ -38,7 +38,7 @@ public class CmdCb {
         return new ArrayList<String>();
     }
     
-    private static boolean checkPermissions(CommandSender sender) {
+    public static boolean checkPermissions(CommandSender sender) {
         if (sender instanceof ConsoleCommandSender) return true;
         if (sender instanceof Player) return sender.isOp();
         ins.getLogger().warning("未处理的命令发送者:" + sender.getClass().getName());
