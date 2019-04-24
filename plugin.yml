@@ -1,6 +1,6 @@
 name: CommandBlock
 main: me.commandBlock.CommandBlock
-version: 1.3.0
+version: 1.4.0
 authors: [slinar]
 description: []
 commands:
