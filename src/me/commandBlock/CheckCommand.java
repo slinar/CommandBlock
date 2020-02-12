@@ -88,7 +88,7 @@ public final class CheckCommand {
      * @return true 匹配成功<br/>
      *         false 匹配失败
      */
-    private static boolean match(String reg, String str) {
+    static boolean match(String reg, String str) {
         boolean result = false;
         try {
             reg = reg.toLowerCase().replace("\\", "").replace("+", "[+]").replaceAll("\\*{1,}", "[-\\\\w]*")
